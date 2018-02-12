@@ -1,0 +1,96 @@
+<!-- ============================================================== -->
+<!-- row -->
+<!-- ============================================================== -->
+<div fxLayout="row" fxLayoutWrap="wrap">
+    <!-- Card column -->
+    <div fxFlex.gt-sm="100%" fxFlex="100">
+        <mat-card>
+            <mat-card-content>
+                <!--<mat-card-title>Stepper</mat-card-title>-->
+                <mat-horizontal-stepper>
+                  <mat-step [stepControl]="firstFormGroup">
+                    <form [formGroup]="firstFormGroup">
+                      <ng-template matStepLabel>Location Information</ng-template>
+                      <mat-form-field>
+                        <input matInput placeholder="Country" [(ngModel)]="info.country" formControlName="firstCtrl">
+                      </mat-form-field>
+                      <mat-form-field>
+                        <mat-select class="example-select" [(ngModel)]="info.province" placeholder="Province" [ngModelOptions]="{standalone: true}">
+                          <mat-option value={{province}} *ngFor="let province of provinces">{{province}}</mat-option>
+
+                        </mat-select>
+                      </mat-form-field>
+                      <mat-form-field>
+                        <mat-select class="example-select" [(ngModel)]="info.district" [ngModelOptions]="{standalone: true}" placeholder="District">
+                          <mat-option value={{district}} *ngFor="let district of districts">{{district}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <mat-form-field>
+                        <mat-select class="example-select" [(ngModel)]="info.division" [ngModelOptions]="{standalone: true}" placeholder="Subdivision">
+                          <mat-option value={{division}} *ngFor="let division of divisions">{{division}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <mat-form-field>
+                        <mat-select class="example-select" [(ngModel)]="info.subDivision" [ngModelOptions]="{standalone: true}" placeholder="Subdivision">
+                          <mat-option value={{subDivision}} *ngFor="let subDivision of subDivisions">{{subDivision}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                      <mat-form-field>
+                        <mat-select class="example-select" [(ngModel)]="info.uc" [ngModelOptions]="{standalone: true}" placeholder="UC">
+                          <mat-option value={{uc}} *ngFor="let uc of ucs">{{uc}}</mat-option>
+
+                        </mat-select>
+                      </mat-form-field>
+
+                      <mat-form-field>
+                        <mat-select class="example-select" [(ngModel)]="info.ward" [ngModelOptions]="{standalone: true}" placeholder="ward">
+                          <mat-option value={{ward}} *ngFor="let ward of wards">{{ward}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                      <mat-form-field>
+                        <mat-select class="example-select" [(ngModel)]="info.block" [ngModelOptions]="{standalone: true}" placeholder="Block">
+                          <mat-option value={{block}} *ngFor="let block of blocks">{{block}}</mat-option>
+
+                        </mat-select>
+                      </mat-form-field>
+                      <div>
+                        <button mat-raised-button color="warn" matStepperNext (click)="completeStep1()">Next</button>
+                      </div>
+                    </form>
+                  </mat-step>
+
+                  <mat-step [stepControl]="secondFormGroup">
+                    <form [formGroup]="secondFormGroup">
+                      <ng-template matStepLabel>Masjid Information</ng-template>
+                      <mat-form-field>
+                        <input matInput placeholder="Name" formControlName="secondCtrl">
+                      </mat-form-field>
+                      <mat-form-field>
+                        <textarea matInput placeholder="Description" formControlName="secondCtrl"></textarea>
+                      </mat-form-field>
+
+                <!--<app-map></app-map>-->
+
+                      <div>
+                        <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+                        <button mat-raised-button color="warn" matStepperNext>Next</button>
+                      </div>
+                    </form>
+                  </mat-step>
+                  <mat-step>
+                    <ng-template matStepLabel>Confirmation</ng-template>
+                    You are now done.
+                    <div>
+                      <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+                    </div>
+                  </mat-step>
+                </mat-horizontal-stepper>
+
+            </mat-card-content>
+
+        </mat-card>
+    </div>
+</div>
+
