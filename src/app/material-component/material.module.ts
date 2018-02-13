@@ -1,7 +1,8 @@
 import 'hammerjs';
-import { NgModule } from '@angular/core';
+import { NgModule  } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 
 import { DemoMaterialModule} from '../demo-material-module';
@@ -28,10 +29,16 @@ import { TooltipComponent } from './tooltip/tooltip.component';
 import { SnackbarComponent } from './snackbar/snackbar.component';
 import { SliderComponent } from './slider/slider.component';
 import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
+import { AgmCoreModule } from '@agm/core';
+
 import {MapComponent} from './../map/map.component'
 
 @NgModule({
   imports: [
+    AgmCoreModule.forRoot({
+      libraries: ["places"],
+      apiKey: ''
+    }),
     CommonModule,
     RouterModule.forChild(MaterialRoutes),
     DemoMaterialModule,
@@ -39,7 +46,9 @@ import {MapComponent} from './../map/map.component'
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    CdkTableModule
+    CdkTableModule,
+    HttpClientModule
+
   ],
   providers: [
 
@@ -65,7 +74,7 @@ import {MapComponent} from './../map/map.component'
     SnackbarComponent,
     SliderComponent,
     SlideToggleComponent,
-    //MapComponent
+    MapComponent
   ]
 })
 

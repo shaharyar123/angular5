@@ -1,5 +1,9 @@
 import { Component,NgModule } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
+
+
 
 @Component({
   selector: 'app-stepper',
@@ -22,7 +26,16 @@ export class StepperComponent {
     country: 'Pakistan'
   };
 
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(
+    private _formBuilder: FormBuilder,
+    private http: HttpClient
+  ) {
+    //console.log('http ',http);
+    //http.get('').subscribe(
+    //  res => console.log('>>',res), err =>{ console.log('<<',err)}
+    //
+    //);
+  }
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
@@ -33,7 +46,7 @@ export class StepperComponent {
     });
   }
   completeStep1(){
-    console.log('working', this.info)
+    console.log('working', this.info);
     //console.log('province', this.province)
     //console.log('district', this.district)
   }

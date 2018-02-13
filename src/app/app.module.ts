@@ -17,7 +17,6 @@ import { AppSidebarComponent } from './layouts/full/sidebar/sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DemoMaterialModule} from './demo-material-module';
 
-import { AgmCoreModule } from '@agm/core';
 
 import { SharedModule } from './shared/shared.module';
 import { SpinnerComponent } from './shared/spinner.component';
@@ -32,10 +31,6 @@ import { SpinnerComponent } from './shared/spinner.component';
     AppSidebarComponent,
   ],
   imports: [
-    AgmCoreModule.forRoot({
-      libraries: ["places"],
-      apiKey: '12345'
-    }),
     BrowserModule,
     BrowserAnimationsModule,
     DemoMaterialModule,
