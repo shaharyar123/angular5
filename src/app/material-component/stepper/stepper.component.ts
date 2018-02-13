@@ -1,7 +1,7 @@
 import { Component,NgModule } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
+import { DataService } from '../../services/dataService/data-service';
 
 
 
@@ -28,7 +28,8 @@ export class StepperComponent {
 
   constructor(
     private _formBuilder: FormBuilder,
-    private http: HttpClient
+    private http: HttpClient,
+    private map: DataService
   ) {
     //console.log('http ',http);
     //http.get('').subscribe(
@@ -49,5 +50,11 @@ export class StepperComponent {
     console.log('working', this.info);
     //console.log('province', this.province)
     //console.log('district', this.district)
+  }
+
+  completeStep2(){
+    this.info.latitude = this.map.map.latitude;
+    this.info.longitude = this.map.map.longitude;
+    console.log('working', this.info);
   }
 }

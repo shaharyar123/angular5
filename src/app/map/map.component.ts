@@ -1,6 +1,9 @@
 import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { Component, ElementRef, NgModule, NgZone, OnInit, ViewChild } from '@angular/core';
 import { AgmCoreModule, MapsAPILoader } from '@agm/core';
+import { DataService } from '../services/dataService/data-service';
+
+declare var google;
 
 @Component({
   selector: 'app-map',
@@ -18,7 +21,8 @@ export class MapComponent implements OnInit {
 
   constructor(
     private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private mapData: DataService
   ) { }
 
   ngOnInit() {
@@ -51,9 +55,11 @@ export class MapComponent implements OnInit {
           //set latitude, longitude and zoom
           this.latitude = place.geometry.location.lat();
           this.longitude = place.geometry.location.lng();
+          this.zoom = 12;
           console.log('position. lat. ',this.latitude)
           console.log('position. lat. ',this.longitude)
-          this.zoom = 12;
+          this.mapData.map.latitude = this.latitude;
+          this.mapData.map.longitude = this.longitude;
         });
       });
     });

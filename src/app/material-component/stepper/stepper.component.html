@@ -65,17 +65,17 @@
                     <form [formGroup]="secondFormGroup">
                       <ng-template matStepLabel>Masjid Information</ng-template>
                       <mat-form-field>
-                        <input matInput placeholder="Name" formControlName="secondCtrl">
+                        <input matInput placeholder="Name" formControlName="secondCtrl" [(ngModel)]="info.masjidName">
                       </mat-form-field>
                       <mat-form-field>
-                        <textarea matInput placeholder="Description" formControlName="secondCtrl"></textarea>
+                        <textarea matInput placeholder="Description" formControlName="secondCtrl" [(ngModel)]="info.masjidDescription"></textarea>
                       </mat-form-field>
 
                 <app-map></app-map>
 
                       <div>
                         <button mat-raised-button color="accent" matStepperPrevious>Back</button>
-                        <button mat-raised-button color="warn" matStepperNext>Next</button>
+                        <button mat-raised-button color="warn" matStepperNext (click)="completeStep2()">Next</button>
                       </div>
                     </form>
                   </mat-step>

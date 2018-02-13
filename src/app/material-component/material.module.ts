@@ -32,12 +32,13 @@ import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
 import { AgmCoreModule } from '@agm/core';
 
 import {MapComponent} from './../map/map.component'
+import { DataService } from '../services/dataService/data-service';
 
 @NgModule({
   imports: [
     AgmCoreModule.forRoot({
       libraries: ["places"],
-      apiKey: ''
+      apiKey: 'AIzaSyAFWNNji1j8iSjNhBOtqkjOVJZY7wB5pp4'
     }),
     CommonModule,
     RouterModule.forChild(MaterialRoutes),
@@ -51,7 +52,7 @@ import {MapComponent} from './../map/map.component'
 
   ],
   providers: [
-
+    DataService,
   ],
   entryComponents: [
     DialogOverviewExampleDialog
